@@ -133,14 +133,26 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		address merchant,
 		uint tierIndex
 	) public {
-		accountAtSubscriptionEnd(merchant, msg.sender);
-		subscriptions[merchant][msg.sender] = Subscription({
+		setTier(
+			merchant,
+			msg.sender,
+			tierIndex
+		);
+	}
+
+	function setTier(
+		address merchant,
+		address customer,
+		uint tierIndex
+	) private {
+		accountAtSubscriptionEnd(merchant, customer);
+		subscriptions[merchant][customer] = Subscription({
 			tier: tierIndex,
 			start: block.timestamp
 		});
 		emit TierSelected(
 			merchant,
-			msg.sender,
+			customer,
 			tierIndex
 		);
 	}
