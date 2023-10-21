@@ -45,14 +45,6 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		_mint(to, amount);
 	}
 
-	// Modifier: used to define a set of rules that must be met before or after a function is executed
-	// Check the withdraw() function
-	modifier isOwner() {
-		// msg.sender: predefined variable that represents address of the account that called the current function
-		require(msg.sender == owner, "Not the Owner");
-		_;
-	}
-
 	function addTier(
 		uint unitsPerWeek,
 		uint pricePerWeek
@@ -109,8 +101,8 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	 * Function that allows the owner to withdraw all the Ether in the contract
 	 * The function can only be called by the owner of the contract as defined by the isOwner modifier
 	 */
-	function withdraw() public isOwner {
-		(bool success, ) = owner.call{ value: address(this).balance }("");
+	function withdraw() public onlyOwner {
+		(bool success, ) = owner().call{ value: address(this).balance }("");
 		require(success, "Failed to send Ether");
 	}
 
