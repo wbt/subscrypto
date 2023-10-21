@@ -132,7 +132,7 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		topUpWithMerchant(
 			merchant,
 			msg.sender,
-			amount,
+			amount
 		);
 	}
 
