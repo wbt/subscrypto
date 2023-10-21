@@ -15,6 +15,11 @@ struct Tier {
 	bool isActivelyOffered;
 }
 
+struct Subscription {
+	uint tier; //tier index
+	uint start; //seconds since 1/1/70 UTC
+}
+
 contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 
 	// State Variables
@@ -24,6 +29,7 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	// mapping(address => uint) public freeBalances; //commented out b/c ERC20 covers it
 	mapping(/*merchant*/ address => mapping(/*customer*/ address => uint)) public serviceDeposits;
 	mapping(/*merchant*/ address => Tier[]) public tiersOffered;
+	mapping(/*merchant*/ address => mapping(/*customer*/ address => Subscription)) public subscriptions;
 
 	event TierAdded(
 		address indexed merchant,
@@ -31,6 +37,18 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		uint unitsPerWeek,
 		uint pricePerWeek,
 		bool isActivelyOffered
+	);
+
+	event TierSelected(
+		address indexed merchant,
+		address indexed customer,
+		uint tierIndex
+	);
+
+	event RevenueRealized(
+		address indexed merchant,
+		address indexed customer,
+		uint amount
 	);
 
 	// Constructor: Called once on contract deployment
@@ -76,6 +94,58 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	}
 
 	/**
+	 * Called by a customer to choose which tier to be in
+	 * Set tierIndex = 0 to end subscription
+	 */
+	function setTier(
+		address merchant,
+		uint tierIndex
+	) public {
+		accountAtSubscriptionEnd(merchant, msg.sender);
+		subscriptions[merchant][msg.sender] = Subscription({
+			tier: tierIndex,
+			start: block.timestamp
+		});
+		emit TierSelected(
+			merchant,
+			msg.sender,
+			tierIndex
+		);
+	}
+
+	function accountAtSubscriptionEnd(
+		address merchant,
+		address customer
+	) private {
+		uint dueToMerchant = amountDueToMerchant(merchant, customer);
+		if(dueToMerchant > 0) {
+			uint cappedToMerchant = min(dueToMerchant, serviceDeposits[merchant][customer]);
+			serviceDeposits[merchant][customer] -= cappedToMerchant;
+			_mint(merchant, cappedToMerchant);
+			emit RevenueRealized(
+				merchant,
+				customer,
+				cappedToMerchant
+			);
+		}
+	}
+
+	function amountDueToMerchant(
+		address merchant,
+		address customer
+	) public view returns(uint) {
+		uint tierIndex = subscriptions[merchant][customer].tier;
+		if(tierIndex > 0) {
+			uint tierRate = tiersOffered[merchant][tierIndex].pricePerWeek;
+			uint timeAtRate = block.timestamp - subscriptions[merchant][customer].start;
+			uint dueToMerchant = (timeAtRate * tierRate / (604800)); //604800 = seconds/week
+			return dueToMerchant;
+		} else {
+			return 0;
+		}
+	}
+
+	/**
 	 * Function that allows anyone to change the state variable "greeting" of the contract and increase the counters
 	 *
 	 * @param _newGreeting (string memory) - new greeting to save on the contract
@@ -113,4 +183,8 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	 * Function that allows the contract to receive ETH
 	 */
 	receive() external payable {}
+
+	function min(uint256 a, uint256 b) public pure returns (uint256) {
+		return a <= b ? a : b;
+	}
 }
