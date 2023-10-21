@@ -230,6 +230,20 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		return serviceDeposits[merchant][customer] - amountDueToMerchant(merchant, customer);
 	}
 
+	function remainingSecondsAtCurrentTier(
+		address merchant,
+		address customer
+	) public view returns(uint) {
+		uint tierIndex = subscriptions[merchant][customer].tier;
+		if(tierIndex > 0) {
+			uint tierRate = tiersOffered[merchant][tierIndex].pricePerWeek;
+			return remainingAvailableDeposit(merchant, customer) * (604800) / tierRate ;
+		} else {
+			return 0;
+		}
+	}
+
+
 	/**
 	 * Function that allows anyone to change the state variable "greeting" of the contract and increase the counters
 	 *
