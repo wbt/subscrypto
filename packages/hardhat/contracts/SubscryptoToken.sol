@@ -27,6 +27,8 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	bool public premium = false;
 	uint256 public totalCounter = 0;
 
+	address feeRecipient;
+	uint millipercentFee = 2000; //2% fee default
 	mapping(/*merchant*/ address => mapping(/*customer*/ address => uint)) public serviceDeposits;
 	mapping(/*merchant*/ address => Tier[]) public tiersOffered;
 	mapping(/*merchant*/ address => mapping(/*customer*/ address => Subscription)) public subscriptions;
@@ -63,13 +65,33 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		uint amount
 	);
 
+	event FeeRecipientSet(
+		address indexed feeRecipient
+	);
+
+	event FeeRateSet(
+		uint millipercentFee
+	);
+
 	// Constructor: Called once on contract deployment
 	// Check packages/hardhat/deploy/00_deploy_your_contract.ts
 	constructor(address initialOwner)
 		ERC20("SubscriptoToken", "SSCO")
 		Ownable(initialOwner)
 		ERC20Permit("SubscriptoToken")
-	{}
+	{
+		feeRecipient = initialOwner;
+	}
+
+	function setFeeRecipient(address _recipient) public onlyOwner {
+		feeRecipient = _recipient;
+		emit FeeRecipientSet(_recipient);
+	}
+
+	function setFeeRate(uint _millipercentFee) public onlyOwner {
+		millipercentFee = _millipercentFee;
+		emit FeeRateSet(_millipercentFee);
+	}
 
 	function mint(address to, uint256 amount) public onlyOwner {
 		_mint(to, amount);
@@ -197,11 +219,14 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		if(dueToMerchant > 0) {
 			uint cappedToMerchant = min(dueToMerchant, serviceDeposits[merchant][customer]);
 			serviceDeposits[merchant][customer] -= cappedToMerchant;
-			_mint(merchant, cappedToMerchant);
+			uint fee = cappedToMerchant * millipercentFee / 100000;
+			uint merchantRevenue = cappedToMerchant - fee;
+			_mint(merchant, merchantRevenue);
+			_mint(feeRecipient, fee);
 			emit RevenueRealized(
 				merchant,
 				customer,
-				cappedToMerchant
+				merchantRevenue
 			);
 		}
 	}
