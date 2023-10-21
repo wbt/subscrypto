@@ -103,7 +103,18 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		address merchant,
 		uint amount
 	) public {
-		address customer = msg.sender;
+		topUpWithMerchant(
+			merchant,
+			msg.sender,
+			amount,
+		);
+	}
+
+	function topUpWithMerchant(
+		address merchant,
+		address customer,
+		uint amount
+	) private {
 		require(balanceOf(customer) >= amount, 'Insufficient balance in Subscrypto contract.');
 		_burn(customer, amount);
 		serviceDeposits[merchant][customer] += amount;
