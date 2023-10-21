@@ -54,7 +54,6 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	}
 
 	function addTier(
-		uint tierIndex,
 		uint unitsPerWeek,
 		uint pricePerWeek,
 		bool isActivelyOffered
