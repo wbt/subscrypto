@@ -96,6 +96,26 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		emit MasterCoinSet(_masterCoin);
 	}
 
+	function deposit() public payable {
+		_mint(msg.sender, msg.value*fixedConversionFromNative);
+	}
+
+	function withdraw() public payable {
+		withdraw(balanceOf(msg.sender));
+	}
+
+	function withdraw(uint amount) public payable {
+		address acct = msg.sender;
+		require(amount <= balanceOf(acct), 'Insufficient uncommitted funds for specified withdrawal amount.');
+		uint ethToSend = amount / fixedConversionFromNative; //TODO verify round-trip rounding security
+		_burn(acct, amount);
+		(bool sent, ) = acct.call{value: ethToSend}("");
+		if(!sent){
+			_mint(acct, amount);
+			revert("Failed to send Ether");
+		}
+	}
+
 	function setMasterCoin(address _masterCoin) public onlyOwner {
 		masterCoin = _masterCoin;
 		emit MasterCoinSet(_masterCoin);
