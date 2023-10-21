@@ -9,20 +9,28 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 // Useful for debugging. Remove when deploying to a live network.
 import "hardhat/console.sol";
 
+struct Tier {
+	uint unitsPerWeek;
+	uint pricePerWeek;
+	bool isActivelyOffered;
+}
+
 contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 
 	// State Variables
 	string public greeting = "Building Unstoppable Apps!!!";
 	bool public premium = false;
 	uint256 public totalCounter = 0;
-	mapping(address => uint) public userGreetingCounter;
+	// mapping(address => uint) public freeBalances; //commented out b/c ERC20 covers it
+	mapping(/*merchant*/ address => mapping(/*customer*/ address => uint)) public serviceDeposits;
+	mapping(/*merchant*/ address => Tier[]) public tiers;
 
-	// Events: a way to emit log statements from smart contract that can be listened to by external parties
-	event GreetingChange(
-		address indexed greetingSetter,
-		string newGreeting,
-		bool premium,
-		uint256 value
+	event TierAdded(
+		address indexed merchant,
+		uint tierIndex,
+		uint unitsPerWeek;
+		uint pricePerWeek;
+		bool isActivelyOffered;
 	);
 
 	// Constructor: Called once on contract deployment
