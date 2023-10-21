@@ -28,9 +28,9 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	event TierAdded(
 		address indexed merchant,
 		uint tierIndex,
-		uint unitsPerWeek;
-		uint pricePerWeek;
-		bool isActivelyOffered;
+		uint unitsPerWeek,
+		uint pricePerWeek,
+		bool isActivelyOffered
 	);
 
 	// Constructor: Called once on contract deployment
@@ -55,21 +55,21 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 
 	function addTier(
 		uint tierIndex,
-		uint unitsPerWeek;
-		uint pricePerWeek;
-		bool isActivelyOffered;
+		uint unitsPerWeek,
+		uint pricePerWeek,
+		bool isActivelyOffered
 	) public {
 		tiers[msg.sender].push(Tier({
 			unitsPerWeek: unitsPerWeek,
 			pricePerWeek: pricePerWeek,
-			isActivelyOffered;
+			isActivelyOffered: isActivelyOffered
 		}));
 		emit TierAdded(
 			msg.sender,
-			tiers.length,
-			unitsPerWeek;
-			pricePerWeek;
-			isActivelyOffered;
+			tiers[msg.sender].length,
+			unitsPerWeek,
+			pricePerWeek,
+			isActivelyOffered
 		);
 	}
 
