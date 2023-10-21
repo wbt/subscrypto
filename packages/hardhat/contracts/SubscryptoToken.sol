@@ -22,7 +22,7 @@ struct Subscription {
 
 contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 
-	// State Variables
+	// Deprecated variables originally included in scaffold-ETH
 	string public greeting = "Building Unstoppable Apps!!!";
 	bool public premium = false;
 	uint256 public totalCounter = 0;
