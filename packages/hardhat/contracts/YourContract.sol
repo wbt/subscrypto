@@ -55,7 +55,7 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 
 	function addTier(
 		uint unitsPerWeek,
-		uint pricePerWeek,
+		uint pricePerWeek
 		//This fn sets a default isActivelyOffered = true
 	) public {
 		addTier(unitsPerWeek, pricePerWeek, true)
