@@ -23,7 +23,7 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	uint256 public totalCounter = 0;
 	// mapping(address => uint) public freeBalances; //commented out b/c ERC20 covers it
 	mapping(/*merchant*/ address => mapping(/*customer*/ address => uint)) public serviceDeposits;
-	mapping(/*merchant*/ address => Tier[]) public tiers;
+	mapping(/*merchant*/ address => Tier[]) public tiersOffered;
 
 	event TierAdded(
 		address indexed merchant,
@@ -58,14 +58,14 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		uint pricePerWeek,
 		bool isActivelyOffered
 	) public {
-		tiers[msg.sender].push(Tier({
+		tiersOffered[msg.sender].push(Tier({
 			unitsPerWeek: unitsPerWeek,
 			pricePerWeek: pricePerWeek,
 			isActivelyOffered: isActivelyOffered
 		}));
 		emit TierAdded(
 			msg.sender,
-			tiers[msg.sender].length,
+			tiersOffered[msg.sender].length,
 			unitsPerWeek,
 			pricePerWeek,
 			isActivelyOffered
