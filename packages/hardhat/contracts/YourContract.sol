@@ -53,6 +53,27 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		_;
 	}
 
+	function addTier(
+		address indexed merchant,
+		uint tierIndex,
+		uint unitsPerWeek;
+		uint pricePerWeek;
+		bool isActivelyOffered;
+	) public {
+		tiers[msg.sender].push(Tier({
+			unitsPerWeek: unitsPerWeek,
+			pricePerWeek: pricePerWeek,
+			isActivelyOffered;
+		}));
+		emit TierAdded(
+			msg.sender,
+			tiers.length,
+			unitsPerWeek;
+			pricePerWeek;
+			isActivelyOffered;
+		);
+	}
+
 	/**
 	 * Function that allows anyone to change the state variable "greeting" of the contract and increase the counters
 	 *
@@ -69,7 +90,6 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		// Change state variables
 		greeting = _newGreeting;
 		totalCounter += 1;
-		userGreetingCounter[msg.sender] += 1;
 
 		// msg.value: built-in global variable that represents the amount of ether sent with the transaction
 		if (msg.value > 0) {
@@ -77,9 +97,6 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		} else {
 			premium = false;
 		}
-
-		// emit: keyword used to trigger an event
-		emit GreetingChange(msg.sender, _newGreeting, msg.value > 0, 0);
 	}
 
 	/**
