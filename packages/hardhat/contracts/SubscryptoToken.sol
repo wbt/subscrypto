@@ -223,6 +223,13 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		}
 	}
 
+	function remainingAvailableDeposit(
+		address merchant,
+		address customer
+	) public view returns(uint) {
+		return serviceDeposits[merchant][customer] - amountDueToMerchant(merchant, customer);
+	}
+
 	/**
 	 * Function that allows anyone to change the state variable "greeting" of the contract and increase the counters
 	 *
