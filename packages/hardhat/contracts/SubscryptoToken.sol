@@ -51,7 +51,8 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	event RevenueRealized(
 		address indexed merchant,
 		address indexed customer,
-		uint amount
+		uint amount,
+		uint fee
 	);
 
 	event TopUp(
@@ -238,7 +239,8 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 			emit RevenueRealized(
 				merchant,
 				customer,
-				merchantRevenue
+				merchantRevenue,
+				fee
 			);
 		}
 	}
