@@ -243,6 +243,29 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		}
 	}
 
+	function stopAndRefund(
+		address merchant
+	) public {
+		stopAndRefund(
+			merchant,
+			msg.sender
+		);
+	}
+
+	function stopAndRefund(
+		address merchant,
+		address customer
+	) private {
+		//This sends money due the merchant back to the merchant
+		setTier(
+			merchant,
+			customer,
+			0
+		);
+		uint amountToRefund = serviceDeposits[merchant][customer];
+		serviceDeposits[merchant][customer] = 0;
+		_mint(customer, amountToRefund);
+	}
 
 	/**
 	 * Function that allows anyone to change the state variable "greeting" of the contract and increase the counters
