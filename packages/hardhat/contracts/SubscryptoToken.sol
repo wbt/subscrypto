@@ -57,6 +57,12 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		uint amount
 	);
 
+	event RefundIssued(
+		address indexed merchant,
+		address indexed customer,
+		uint amount
+	);
+
 	// Constructor: Called once on contract deployment
 	// Check packages/hardhat/deploy/00_deploy_your_contract.ts
 	constructor(address initialOwner)
@@ -265,6 +271,11 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		uint amountToRefund = serviceDeposits[merchant][customer];
 		serviceDeposits[merchant][customer] = 0;
 		_mint(customer, amountToRefund);
+		emit RefundIssued(
+			merchant,
+			customer,
+			amountToRefund
+		);
 	}
 
 	/**
