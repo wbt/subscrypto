@@ -200,6 +200,14 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		}
 	}
 
+	function claimRevenue(
+		address merchant,
+		address customer
+	) public { //Anyone can pay the gas - TODO check for security downsides
+		accountAtSubscriptionEnd(merchant, customer);
+		subscriptions[merchant][customer].start = block.timestamp;
+	}
+
 	function amountDueToMerchant(
 		address merchant,
 		address customer
