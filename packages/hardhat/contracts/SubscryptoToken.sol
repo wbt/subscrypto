@@ -26,7 +26,7 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	string public greeting = "Building Unstoppable Apps!!!";
 	bool public premium = false;
 	uint256 public totalCounter = 0;
-	// mapping(address => uint) public freeBalances; //commented out b/c ERC20 covers it
+
 	mapping(/*merchant*/ address => mapping(/*customer*/ address => uint)) public serviceDeposits;
 	mapping(/*merchant*/ address => Tier[]) public tiersOffered;
 	mapping(/*merchant*/ address => mapping(/*customer*/ address => Subscription)) public subscriptions;
