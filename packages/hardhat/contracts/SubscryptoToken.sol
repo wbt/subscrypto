@@ -53,6 +53,9 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		addTier(unitsPerWeek, pricePerWeek, true);
 	}
 
+	/**
+	 *  Called by a merchant to offer a way to pay for the merchant's services.
+	 */
 	function addTier(
 		uint unitsPerWeek,
 		uint pricePerWeek,
