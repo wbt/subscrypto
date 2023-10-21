@@ -1,0 +1,51 @@
+<div className="w-96 h-96 relative bg-red-900">
+  <div className="w-96 h-96 left-0 top-0 absolute bg-indigo-50" />
+  <div className="w-96 h-96 left-0 top-[444px] absolute bg-white rounded-3xl shadow" />
+  <div className="w-96 h-14 left-[-3px] top-[745px] absolute bg-blue-200" />
+  <div className="w-96 h-96 left-[-184px] top-[-184px] absolute bg-blue-600 bg-opacity-40 rounded-full shadow border" />
+  <div className="w-72 h-11 left-[33px] top-[80px] absolute bg-white rounded-2xl" />
+  <div className="w-6 h-4 left-[19px] top-[41px] absolute">
+    <div className="w-6 h-px left-0 top-0 absolute bg-zinc-300 border-4 border-black"></div>
+    <div className="w-6 h-px left-0 top-[8px] absolute bg-zinc-300 border-4 border-black"></div>
+    <div className="w-6 h-px left-0 top-[16px] absolute bg-zinc-300 border-4 border-black"></div>
+  </div>
+  <div className="w-52 h-px left-[78px] top-[464px] absolute bg-neutral-300 border-8 border-stone-300"></div>
+  <div className="w-72 h-12 left-[57px] top-[31px] absolute text-black text-2xl font-bold font-['Istok Web']">Welcome, Jack!</div>
+  <div className="w-48 h-8 left-[80px] top-[87px] absolute text-neutral-400 text-xl font-bold font-['Istok Web']">Search</div>
+  <div className="w-80 h-32 left-[15px] top-[332px] absolute text-black text-xl font-bold font-['Istok Web']">Overview</div>
+  <div className="w-80 h-40 left-[12px] top-[150px] absolute bg-violet-700 bg-opacity-60 rounded-2xl" />
+  <div className="w-16 h-16 left-[15px] top-[364px] absolute">
+    <div className="w-16 h-16 left-0 top-0 absolute bg-zinc-300 rounded-full" />
+    <img className="w-24 h-24 left-[-19px] top-[-19px] absolute" src="https://via.placeholder.com/101x101" />
+  </div>
+  <div className="w-16 h-16 left-[12px] top-[479px] absolute">
+    <div className="w-16 h-16 left-0 top-0 absolute bg-zinc-300 rounded-full" />
+    <img className="w-28 h-28 left-[-19.90px] top-[-19.90px] absolute" src="https://via.placeholder.com/106x106" />
+  </div>
+  <div className="w-16 h-16 left-[10px] top-[659px] absolute">
+    <div className="w-16 h-16 left-0 top-0 absolute bg-zinc-300 rounded-full" />
+    <img className="w-28 h-28 left-[-20.51px] top-[-20.51px] absolute" src="https://via.placeholder.com/109x109" />
+  </div>
+  <div className="w-16 h-16 left-[83px] top-[364px] absolute">
+    <div className="w-16 h-16 left-0 top-0 absolute bg-zinc-300 rounded-full" />
+    <img className="w-16 h-16 left-[-2.05px] top-[-2.05px] absolute" src="https://via.placeholder.com/67x67" />
+  </div>
+  <div className="w-16 h-16 left-[10px] top-[570px] absolute">
+    <div className="w-16 h-16 left-0 top-0 absolute bg-zinc-300 rounded-full" />
+    <img className="w-20 h-20 left-[-2.21px] top-[-2.21px] absolute" src="https://via.placeholder.com/72x72" />
+  </div>
+  <img className="w-9 h-9 left-[229px] top-[754px] absolute rounded-full" src="https://via.placeholder.com/38x38" />
+  <img className="w-9 h-9 left-[294px] top-[754px] absolute" src="https://via.placeholder.com/38x37" />
+  <img className="w-10 h-10 left-[159px] top-[754px] absolute" src="https://via.placeholder.com/41x41" />
+  <img className="w-12 h-12 left-[19px] top-[749px] absolute" src="https://via.placeholder.com/47x47" />
+  <img className="w-12 h-12 left-[86px] top-[749px] absolute" src="https://via.placeholder.com/52x52" />
+  <div className="w-72 h-28 left-[22px] top-[218px] absolute text-white text-opacity-80 text-3xl font-bold font-['Istok Web']">10.00000 ETC<br/>(USD$40,000)</div>
+  <div className="w-72 h-14 left-[26px] top-[165px] absolute text-white text-opacity-80 text-3xl font-bold font-['Istok Web'] underline">Total Balance</div>
+  <div className="w-32 h-16 left-[90px] top-[478px] absolute"><span style="text-black text-base font-bold font-['Istok Web']">Netflix<br/></span><span style="text-stone-500 text-xs font-bold font-['Istok Web']">20 Oct 02:40pm</span></div>
+  <div className="w-32 h-16 left-[243px] top-[478px] absolute text-red-500 text-base font-bold font-['Istok Web']">-0.00076 ETC</div>
+  <div className="w-32 h-16 left-[243px] top-[655px] absolute text-red-500 text-base font-bold font-['Istok Web']">-0.00076 ETC</div>
+  <div className="w-32 h-16 left-[243px] top-[568px] absolute text-green-400 text-base font-bold font-['Istok Web']">+0.00036 ETC</div>
+  <div className="w-32 h-16 left-[90px] top-[658px] absolute"><span style="text-black text-base font-bold font-['Istok Web']">Netflix<br/></span><span style="text-stone-500 text-xs font-bold font-['Istok Web']">20 Sep 03:15pm</span></div>
+  <div className="w-32 h-16 left-[90px] top-[568px] absolute"><span style="text-black text-base font-bold font-['Istok Web']">Spotify<br/></span><span style="text-stone-500 text-xs font-bold font-['Istok Web']">19 Oct 06:40pm</span></div>
+  <img className="w-7 h-7 left-[43px] top-[88px] absolute border" src="https://via.placeholder.com/28x30" />
+</div>
