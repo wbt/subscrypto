@@ -1,0 +1,57 @@
+<div className="w-96 h-96 relative bg-red-900">
+  <div className="w-96 h-96 left-0 top-0 absolute bg-indigo-50" />
+  <div className="w-96 h-96 left-[200px] top-[-166px] absolute bg-violet-400 rounded-full shadow border" />
+  <div className="w-96 h-96 left-[-327px] top-[638px] absolute bg-blue-300 rounded-full shadow border" />
+  <div className="w-96 h-16 left-0 top-0 absolute bg-violet-950 shadow" />
+  <div className="w-96 h-14 left-[-3px] top-[745px] absolute bg-blue-200" />
+  <img className="w-9 h-9 left-[229px] top-[754px] absolute rounded-full" src="https://via.placeholder.com/38x38" />
+  <img className="w-9 h-9 left-[294px] top-[754px] absolute" src="https://via.placeholder.com/38x37" />
+  <img className="w-10 h-10 left-[159px] top-[754px] absolute" src="https://via.placeholder.com/41x41" />
+  <img className="w-12 h-12 left-[19px] top-[749px] absolute" src="https://via.placeholder.com/47x47" />
+  <img className="w-12 h-12 left-[86px] top-[749px] absolute" src="https://via.placeholder.com/52x52" />
+  <div className="w-16 h-16 left-[279px] top-[679px] absolute">
+    <div className="w-16 h-16 left-0 top-0 absolute bg-white bg-opacity-0 rounded-full border-2 border-black" />
+    <img className="w-10 h-10 left-[10.29px] top-[10.29px] absolute" src="https://via.placeholder.com/41x41" />
+  </div>
+  <div className="w-36 h-36 left-[109px] top-[140px] absolute bg-white rounded-full border-2 border-black" />
+  <div className="w-80 h-32 left-[19px] top-[87px] absolute text-black text-4xl font-bold font-['Istok Web']">Hosting</div>
+  <img className="w-11 h-11 left-[58px] top-[13px] absolute origin-top-left rotate-180" src="https://via.placeholder.com/46x46" />
+  <div className="w-64 h-14 left-[52px] top-[410px] absolute text-center text-black text-2xl font-bold font-['Istok Web'] underline">Tier selection</div>
+  <div className="w-20 h-11 left-[20px] top-[465px] absolute text-black text-2xl font-bold font-['Istok Web']">Tier</div>
+  <div className="w-28 h-11 left-[227px] top-[464px] absolute text-black text-2xl font-bold font-['Istok Web']">Deposit</div>
+  <div className="w-28 h-11 left-[92px] top-[464px] absolute text-black text-2xl font-bold font-['Istok Web']">Unit/wk</div>
+  <div className="w-36 h-16 left-[105px] top-[177px] absolute text-center text-black text-opacity-40 text-2xl font-bold font-['Istok Web']">Add Icon</div>
+  <div className="w-80 h-px left-[19px] top-[509px] absolute bg-neutral-300 border-8 border-stone-300"></div>
+  <div className="w-80 h-px left-[19px] top-[591px] absolute bg-neutral-300 border-8 border-stone-300"></div>
+  <div className="w-80 h-px left-[19px] top-[672px] absolute bg-neutral-300 border-8 border-stone-300"></div>
+  <div className="w-64 h-11 left-[49px] top-[293px] absolute">
+    <div className="w-64 h-11 left-0 top-0 absolute bg-white rounded-lg border-b-2 border-black" />
+    <div className="w-36 left-[56px] top-[6px] absolute text-center text-black text-opacity-40 text-2xl font-bold font-['Istok Web']">Name</div>
+  </div>
+  <div className="w-64 h-11 left-[49px] top-[350px] absolute">
+    <div className="w-64 h-11 left-0 top-0 absolute bg-white rounded-lg border-b-2 border-black" />
+    <div className="w-36 left-[56px] top-[6px] absolute text-center text-black text-opacity-40 text-2xl font-bold font-['Istok Web']">Website</div>
+  </div>
+  <div className="w-36 h-16 left-[193px] top-[511px] absolute">
+    <div className="w-36 h-11 left-0 top-[11px] absolute bg-white rounded-lg border-b-2 border-black" />
+    <div className="w-36 h-16 left-0 top-0 absolute text-center text-black text-opacity-40 text-2xl font-bold font-['Istok Web']">0.00000 ETC</div>
+  </div>
+  <div className="w-20 h-16 left-[95px] top-[511px] absolute">
+    <div className="w-20 h-11 left-0 top-[10px] absolute bg-white rounded-lg border-b-2 border-black" />
+    <div className="w-20 h-16 left-0 top-0 absolute text-center text-black text-opacity-40 text-2xl font-bold font-['Istok Web']">0</div>
+  </div>
+  <div className="w-20 h-16 left-[93px] top-[593px] absolute">
+    <div className="w-20 h-11 left-0 top-[10px] absolute bg-white rounded-lg border-b-2 border-black" />
+    <div className="w-20 h-16 left-0 top-0 absolute text-center text-black text-opacity-40 text-2xl font-bold font-['Istok Web']">0</div>
+  </div>
+  <div className="w-36 h-11 left-[193px] top-[605px] absolute">
+    <div className="w-36 h-11 left-0 top-0 absolute bg-white rounded-lg border-b-2 border-black" />
+    <div className="w-36 h-7 left-[1px] top-[12px] absolute text-center text-black text-opacity-40 text-2xl font-bold font-['Istok Web']">0.0000 ETC</div>
+  </div>
+  <div className="w-24 h-11 left-[-7px] top-[522px] absolute text-center text-black text-2xl font-bold font-['Istok Web']">1</div>
+  <div className="w-24 h-11 left-[-7px] top-[606px] absolute text-center text-black text-2xl font-bold font-['Istok Web']">2</div>
+  <div className="w-40 h-11 left-[101px] top-[694px] absolute">
+    <div className="w-40 h-10 left-0 top-[2px] absolute bg-lime-500 bg-opacity-25" />
+    <div className="w-36 left-[4px] top-0 absolute text-center text-black text-3xl font-bold font-['Istok Web']">Confirm</div>
+  </div>
+</div>

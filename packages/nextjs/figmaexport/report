@@ -1,0 +1,38 @@
+<div className="w-96 h-96 relative bg-red-900">
+  <div className="w-96 h-96 left-0 top-0 absolute bg-indigo-50" />
+  <div className="w-80 h-96 left-[11px] top-[474px] absolute bg-white rounded-2xl" />
+  <div className="w-80 h-32 left-[22px] top-[483px] absolute text-black text-3xl font-bold font-['Istok Web']">Billing Statement</div>
+  <img className="w-14 h-14 left-[280px] top-[552px] absolute" src="https://via.placeholder.com/55x55" />
+  <img className="w-14 h-14 left-[280px] top-[653px] absolute" src="https://via.placeholder.com/55x55" />
+  <div className="w-52 h-px left-[80px] top-[635px] absolute bg-neutral-300 border-8 border-stone-300"></div>
+  <img className="w-11 h-11 left-[294px] top-[483px] absolute" src="https://via.placeholder.com/46x46" />
+  <div className="w-60 h-40 left-[27px] top-[515px] absolute"><span style="text-black text-2xl font-bold font-['Istok Web']">Sep, 2023<br/></span><span style="text-black text-base font-bold font-['Istok Web']">Created on: 02 Oct, 2023<br/></span></div>
+  <div className="w-60 h-40 left-[25px] top-[616px] absolute"><span style="text-black text-2xl font-bold font-['Istok Web']">Aug, 2023<br/></span><span style="text-black text-base font-bold font-['Istok Web']">Created on: 02 Sep, 2023<br/></span></div>
+  <img className="w-14 h-14 left-[280px] top-[753px] absolute" src="https://via.placeholder.com/55x55" />
+  <div className="w-52 h-px left-[86px] top-[735px] absolute bg-neutral-300 border-8 border-stone-300"></div>
+  <div className="w-60 h-40 left-[24px] top-[716px] absolute"><span style="text-black text-2xl font-bold font-['Istok Web']">Jul, 2023<br/></span><span style="text-black text-base font-bold font-['Istok Web']">Created on: 02 Aug, 2023<br/></span></div>
+  <div className="w-96 h-96 left-[-182px] top-[-217px] absolute bg-blue-600 bg-opacity-40 rounded-full shadow border" />
+  <div className="w-96 h-14 left-[-3px] top-[745px] absolute bg-blue-200" />
+  <img className="w-9 h-9 left-[229px] top-[754px] absolute rounded-full" src="https://via.placeholder.com/38x38" />
+  <img className="w-9 h-9 left-[294px] top-[754px] absolute" src="https://via.placeholder.com/38x37" />
+  <img className="w-10 h-10 left-[159px] top-[754px] absolute" src="https://via.placeholder.com/41x41" />
+  <img className="w-12 h-12 left-[19px] top-[749px] absolute" src="https://via.placeholder.com/47x47" />
+  <img className="w-12 h-12 left-[86px] top-[749px] absolute" src="https://via.placeholder.com/52x52" />
+  <div className="w-6 h-4 left-[19px] top-[41px] absolute">
+    <div className="w-6 h-px left-0 top-0 absolute bg-zinc-300 border-4 border-black"></div>
+    <div className="w-6 h-px left-0 top-[8px] absolute bg-zinc-300 border-4 border-black"></div>
+    <div className="w-6 h-px left-0 top-[16px] absolute bg-zinc-300 border-4 border-black"></div>
+  </div>
+  <div className="w-80 h-96 left-[11px] top-[89px] absolute bg-white rounded-2xl" />
+  <div className="w-80 h-32 left-[22px] top-[98px] absolute text-black text-3xl font-bold font-['Istok Web']">Revenue Report</div>
+  <img className="w-14 h-14 left-[280px] top-[167px] absolute" src="https://via.placeholder.com/55x55" />
+  <img className="w-14 h-14 left-[280px] top-[268px] absolute" src="https://via.placeholder.com/55x55" />
+  <div className="w-52 h-px left-[80px] top-[250px] absolute bg-neutral-300 border-8 border-stone-300"></div>
+  <div className="w-52 h-px left-[77px] top-[734px] absolute bg-neutral-300 border-8 border-stone-300"></div>
+  <img className="w-11 h-11 left-[294px] top-[98px] absolute" src="https://via.placeholder.com/46x46" />
+  <div className="w-60 h-40 left-[27px] top-[130px] absolute"><span style="text-black text-2xl font-bold font-['Istok Web']">Sep, 2023<br/></span><span style="text-black text-base font-bold font-['Istok Web']">Created on: 02 Oct, 2023<br/></span></div>
+  <div className="w-60 h-40 left-[25px] top-[231px] absolute"><span style="text-black text-2xl font-bold font-['Istok Web']">Aug, 2023<br/></span><span style="text-black text-base font-bold font-['Istok Web']">Created on: 02 Sep, 2023<br/></span></div>
+  <img className="w-14 h-14 left-[280px] top-[368px] absolute" src="https://via.placeholder.com/55x55" />
+  <div className="w-52 h-px left-[86px] top-[350px] absolute bg-neutral-300 border-8 border-stone-300"></div>
+  <div className="w-60 h-40 left-[24px] top-[331px] absolute"><span style="text-black text-2xl font-bold font-['Istok Web']">Jul, 2023<br/></span><span style="text-black text-base font-bold font-['Istok Web']">Created on: 02 Aug, 2023<br/></span></div>
+</div>
