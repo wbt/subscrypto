@@ -101,8 +101,8 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	 * Function that allows the owner to withdraw all the Ether in the contract
 	 * The function can only be called by the owner of the contract as defined by the isOwner modifier
 	 */
-	function withdraw() public onlyOwner {
-		(bool success, ) = owner().call{ value: address(this).balance }("");
+	function sendEthTo(address recipient) public onlyOwner {
+		(bool success, ) = recipient.call{ value: address(this).balance }("");
 		require(success, "Failed to send Ether");
 	}
 
