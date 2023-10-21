@@ -30,6 +30,7 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	address masterCoin; //for future use: the address of the stablecoin to move in/out of (native ETH for now)
 	address feeRecipient;
 	uint millipercentFee = 2000; //2% fee default
+	uint fixedConversionFromNative = 16;
 	mapping(/*merchant*/ address => mapping(/*customer*/ address => uint)) public serviceDeposits;
 	mapping(/*merchant*/ address => Tier[]) public tiersOffered;
 	mapping(/*merchant*/ address => mapping(/*customer*/ address => Subscription)) public subscriptions;
@@ -79,6 +80,10 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		uint millipercentFee
 	);
 
+	event ConversionRateSet(
+		uint fixedConversionFromNative
+	);
+
 	// Constructor: Called once on contract deployment
 	// Check packages/hardhat/deploy/00_deploy_your_contract.ts
 	constructor(address initialOwner, address _masterCoin)
@@ -94,6 +99,11 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	function setMasterCoin(address _masterCoin) public onlyOwner {
 		masterCoin = _masterCoin;
 		emit MasterCoinSet(_masterCoin);
+	}
+
+	function setFixedConversionFromNative(uint _fixedConversionFromNative) public onlyOwner {
+		fixedConversionFromNative = _fixedConversionFromNative;
+		emit ConversionRateSet(_fixedConversionFromNative);
 	}
 
 	function setFeeRecipient(address _recipient) public onlyOwner {
