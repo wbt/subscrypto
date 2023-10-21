@@ -11,7 +11,7 @@ export const ContractInteraction = () => {
   const [newGreeting, setNewGreeting] = useState("");
 
   const { writeAsync, isLoading } = useScaffoldContractWrite({
-    contractName: "YourContract",
+    contractName: "SubscryptoToken",
     functionName: "setGreeting",
     args: [newGreeting],
     value: parseEther("0.01"),

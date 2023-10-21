@@ -21,22 +21,22 @@ export const ContractData = () => {
   const greetingRef = useRef<HTMLDivElement>(null);
 
   const { data: totalCounter } = useScaffoldContractRead({
-    contractName: "YourContract",
+    contractName: "SubscryptoToken",
     functionName: "totalCounter",
   });
 
   const { data: currentGreeting, isLoading: isGreetingLoading } = useScaffoldContractRead({
-    contractName: "YourContract",
+    contractName: "SubscryptoToken",
     functionName: "greeting",
   });
 
   useScaffoldEventSubscriber({
-    contractName: "YourContract",
-    eventName: "GreetingChange",
+    contractName: "SubscryptoToken",
+    eventName: "TierAdded",
     listener: logs => {
       logs.map(log => {
-        const { greetingSetter, value, premium, newGreeting } = log.args;
-        console.log("📡 GreetingChange event", greetingSetter, value, premium, newGreeting);
+        const { merchant, tierIndex, unitsPerWeek, pricePerWeek, isActivelyOffered } = log.args;
+        console.log("📡 TierAdded event", merchant, tierIndex, unitsPerWeek, pricePerWeek, isActivelyOffered);
       });
     },
   });
@@ -46,17 +46,17 @@ export const ContractData = () => {
     isLoading: isLoadingEvents,
     error: errorReadingEvents,
   } = useScaffoldEventHistory({
-    contractName: "YourContract",
-    eventName: "GreetingChange",
+    contractName: "SubscryptoToken",
+    eventName: "TierAdded",
     fromBlock: process.env.NEXT_PUBLIC_DEPLOY_BLOCK ? BigInt(process.env.NEXT_PUBLIC_DEPLOY_BLOCK) : 0n,
-    filters: { greetingSetter: address },
+    filters: { merchant: address },
     blockData: true,
   });
 
   console.log("Events:", isLoadingEvents, errorReadingEvents, myGreetingChangeEvents);
 
-  const { data: yourContract } = useScaffoldContract({ contractName: "YourContract" });
-  console.log("yourContract: ", yourContract);
+  const { data: yourContract } = useScaffoldContract({ contractName: "SubscryptoToken" });
+  console.log("subscryptoToken: ", yourContract);
 
   const { showAnimation } = useAnimationConfig(totalCounter);
 
