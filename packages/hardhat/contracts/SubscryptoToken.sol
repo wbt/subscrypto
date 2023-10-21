@@ -99,6 +99,32 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		);
 	}
 
+	function topUpWithMerchantAndSetTier(
+		address merchant,
+		uint tierIndex,
+		uint amount
+	) public {
+		topUpWithMerchantAndSetTier(
+			merchant,
+			msg.sender,
+			tierIndex,
+			amount
+		);
+	}
+
+	function topUpWithMerchantAndSetTier(
+		address merchant,
+		address customer,
+		uint tierIndex,
+		uint amount
+	) private {
+		//setTier FIRST so any existing balance is subject to the cap of
+		//funds in the account regarding the amount due, as the merchant
+		//may have stopped providing services after the balance reached 0.
+		setTier(merchant, customer, tierIndex);
+		topUpWithMerchant(merchant, customer, amount);
+	}
+
 	function topUpWithMerchant(
 		address merchant,
 		uint amount
