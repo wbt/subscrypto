@@ -51,6 +51,12 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		uint amount
 	);
 
+	event TopUp(
+		address indexed merchant,
+		address indexed customer,
+		uint amount
+	);
+
 	// Constructor: Called once on contract deployment
 	// Check packages/hardhat/deploy/00_deploy_your_contract.ts
 	constructor(address initialOwner)
@@ -90,6 +96,21 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 			unitsPerWeek,
 			pricePerWeek,
 			isActivelyOffered
+		);
+	}
+
+	function topUpWithMerchant(
+		address merchant,
+		uint amount
+	) public {
+		address customer = msg.sender;
+		require(balanceOf(customer) >= amount, 'Insufficient balance in Subscrypto contract.');
+		_burn(customer, amount);
+		serviceDeposits[merchant][customer] += amount;
+		emit TopUp(
+			merchant,
+			msg.sender,
+			amount
 		);
 	}
 
