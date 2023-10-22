@@ -1,5 +1,5 @@
 {
-  "name": "Scaffold-ETH 2 DApp",
-  "description": "A DApp built with Scaffold-ETH",
-  "iconPath": "logo.svg"
+  "name": "Subscrypto",
+  "description": "A DApp to facilitate crypto payment for API subscriptions.",
+  "iconPath": "safari-pinnned-tab.svg"
 }
