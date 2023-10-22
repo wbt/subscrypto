@@ -279,7 +279,7 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		address customer,
 		uint tierIndex
 	) private {
-		require(tierIndex < tiers[merchant].length, 'No such tier offered by this merchant.');
+		require(tierIndex < tiersOffered[merchant].length, 'No such tier offered by this merchant.');
 		accountAtSubscriptionEnd(merchant, customer);
 		subscriptions[merchant][customer] = Subscription({
 			tier: tierIndex,
