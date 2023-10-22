@@ -9,9 +9,7 @@ const MerchantSetup: NextPage = () => {
         title="API Merchant: Set up tiers"
         description="Allows the maker of an API to set up offerings to sell access for cryptocurrency payments."
       />
-      <div className="grid lg:grid-cols-2 flex-grow">
-        <TierListing showOfferedStatus={true} />
-      </div>
+      <TierListing showOfferedStatus={true} />
     </>
   );
 };
