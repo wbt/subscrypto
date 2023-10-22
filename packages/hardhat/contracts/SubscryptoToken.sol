@@ -377,7 +377,7 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		address merchant,
 		address customer
 	) private {
-		//This sends money due the merchant back to the merchant
+		//This sends money due the merchant to the merchant:
 		setTier(
 			merchant,
 			customer,
