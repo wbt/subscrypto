@@ -36,7 +36,7 @@ def insert_record(formbody):
     
     formbody = formbody.replace("=", "' : '")
     formbody = formbody.replace("&", "', '")
-    formbody = "INSERT INTO subscriptions value {'" + formbody +  "'}"
+    formbody = "INSERT INTO subscriptions3 value {'" + formbody +  "'}"
     
     client = boto3.client('dynamodb')
     client.execute_statement(Statement= formbody)
