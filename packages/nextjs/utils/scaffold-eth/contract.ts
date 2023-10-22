@@ -53,6 +53,7 @@ type IsContractDeclarationMissing<TYes, TNo> = typeof contractsData extends { [k
 
 type ContractsDeclaration = IsContractDeclarationMissing<GenericContractsDeclaration, typeof contractsData>;
 
+//@ts-ignore as it can't figure out two 63s match since it generalizes to Number.
 type Contracts = ContractsDeclaration[ConfiguredChainId][0]["contracts"];
 
 export type ContractName = keyof Contracts;
