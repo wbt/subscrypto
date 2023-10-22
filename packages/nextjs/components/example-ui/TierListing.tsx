@@ -58,7 +58,7 @@ export const TierListing = (props: { showOfferedStatus: boolean; merchant: strin
   return (
     <div className="w-full">
       <div className="topRow">
-        <h2 className="text-4xl text-center">{tierCountText}</h2>
+        <h2 className="text-4xl text-center mt-8">{tierCountText}</h2>
       </div>
       <TierList merchant={props.merchant} tiersLength={tiersLength} showOfferedStatus={props.showOfferedStatus} />
     </div>

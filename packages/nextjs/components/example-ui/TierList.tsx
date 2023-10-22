@@ -12,7 +12,7 @@ export const TierList = (props: { merchant?: string; tiersLength?: bigint; showO
     indicies.push(i);
   }
   return (
-    <div className="flex flex-col justify-center items-center py-10 px-5 sm:px-0 lg:py-auto max-w-[100vw] ">
+    <div className="flex flex-col justify-center items-center px-5 sm:px-0 lg:py-auto max-w-[100vw] ">
       <ol>
         {indicies.map(index => (
           <TierCard
