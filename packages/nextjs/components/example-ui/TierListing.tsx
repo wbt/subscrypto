@@ -43,16 +43,18 @@ export const TierListing = (props: { showOfferedStatus: boolean }) => {
 
   const { data: yourContract } = useScaffoldContract({ contractName: "SubscryptoToken" });
   console.log("subscryptoToken: ", yourContract);
-
-  let tierCountText = "No defined tiers for this merchant account yet! You can create one below.";
-  if (isTierCountLoading) {
-    tierCountText = "Loading...";
-  } else if (typeof tiersLength === "undefined") {
-    tierCountText = "Error loading defined tiers.";
-  } else if (tiersLength === 1n) {
-    tierCountText = (tiersLength - 1n).toString() + " defined tier:";
-  } else if (tiersLength > 1n) {
-    tierCountText = (tiersLength - 1n).toString() + " defined tiers:";
+  let tierCountText = "You can choose from the following predefined tiers:";
+  if (props.showOfferedStatus) {
+    tierCountText = "No defined tiers for this merchant account yet! You can create one below.";
+    if (isTierCountLoading) {
+      tierCountText = "Loading...";
+    } else if (typeof tiersLength === "undefined") {
+      tierCountText = "Error loading defined tiers.";
+    } else if (tiersLength === 1n) {
+      tierCountText = (tiersLength - 1n).toString() + " defined tier:";
+    } else if (tiersLength > 1n) {
+      tierCountText = (tiersLength - 1n).toString() + " defined tiers:";
+    }
   }
 
   return (
