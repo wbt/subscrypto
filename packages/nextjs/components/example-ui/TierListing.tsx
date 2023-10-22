@@ -1,5 +1,4 @@
 import { TierList } from "./TierList";
-import { useAccount } from "wagmi";
 import {
   useScaffoldContract,
   useScaffoldContractRead,
@@ -7,13 +6,11 @@ import {
   useScaffoldEventSubscriber,
 } from "~~/hooks/scaffold-eth";
 
-export const TierListing = (props: { showOfferedStatus: boolean }) => {
-  const { address } = useAccount();
-
+export const TierListing = (props: { showOfferedStatus: boolean; merchant: string | undefined }) => {
   const { data: tiersLength, isLoading: isTierCountLoading } = useScaffoldContractRead({
     contractName: "SubscryptoToken",
     functionName: "getTiersCount",
-    args: [address],
+    args: [props.merchant],
   });
 
   useScaffoldEventSubscriber({
@@ -35,7 +32,7 @@ export const TierListing = (props: { showOfferedStatus: boolean }) => {
     contractName: "SubscryptoToken",
     eventName: "TierAdded",
     fromBlock: process.env.NEXT_PUBLIC_DEPLOY_BLOCK ? BigInt(process.env.NEXT_PUBLIC_DEPLOY_BLOCK) : 0n,
-    filters: { merchant: address },
+    filters: { merchant: props.merchant },
     blockData: true,
   });
 
@@ -62,7 +59,7 @@ export const TierListing = (props: { showOfferedStatus: boolean }) => {
       <div className="topRow">
         <h2 className="text-4xl">{tierCountText}</h2>
       </div>
-      <TierList merchant={address} tiersLength={tiersLength} showOfferedStatus={props.showOfferedStatus} />
+      <TierList merchant={props.merchant} tiersLength={tiersLength} showOfferedStatus={props.showOfferedStatus} />
     </div>
   );
 };
