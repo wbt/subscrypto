@@ -1,11 +1,11 @@
 const contracts = {
-  31337: [
+  63: [
     {
-      chainId: "31337",
-      name: "localhost",
+      chainId: "63",
+      name: "etcMordor",
       contracts: {
         FakeMasterToken: {
-          address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+          address: "0x5C515e136Be44e7B5D156c2980338d528098F947",
           abi: [
             {
               inputs: [
@@ -662,7 +662,7 @@ const contracts = {
           ],
         },
         SubscryptoToken: {
-          address: "0xf5059a5D33d5853360D16C683c16e67980206f36",
+          address: "0x926A8217191Ff2594ac48E97757Ea45D62729714",
           abi: [
             {
               inputs: [

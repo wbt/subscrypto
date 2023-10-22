@@ -12,7 +12,7 @@
     "account": "yarn workspace @se-2/hardhat account",
     "chain": "yarn workspace @se-2/hardhat chain",
     "fork": "yarn workspace @se-2/hardhat fork",
-    "deploy": "yarn workspace @se-2/hardhat deploy",
+    "deploy": "yarn workspace @se-2/hardhat deploy --network etcMordor",
     "verify": "yarn workspace @se-2/hardhat verify",
     "compile": "yarn workspace @se-2/hardhat compile",
     "generate": "yarn workspace @se-2/hardhat generate",

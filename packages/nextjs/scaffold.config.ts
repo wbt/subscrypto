@@ -1,4 +1,5 @@
 import * as chains from "wagmi/chains";
+import type { Chain } from "wagmi/chains";
 
 export type ScaffoldConfig = {
   targetNetwork: chains.Chain;
@@ -9,9 +10,24 @@ export type ScaffoldConfig = {
   walletAutoConnect: boolean;
 };
 
+const mordorETCdetails: Chain = {
+  id: 63,
+  name: "Ethereum Classic Testnet Mordor",
+  network: "etcMordor",
+  nativeCurrency: {
+    name: "Mordor Classic Testnet Ether",
+    symbol: "METC",
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: { http: ["https://rpc.mordor.etccooperative.org" as const] },
+    public: { http: ["https://rpc.mordor.etccooperative.org" as const] },
+  },
+};
+
 const scaffoldConfig = {
   // The network where your DApp lives in
-  targetNetwork: chains.hardhat,
+  targetNetwork: mordorETCdetails, //chains.hardhat,
 
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect on the local network
