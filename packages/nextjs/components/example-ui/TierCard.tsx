@@ -15,7 +15,7 @@ export const TierCard = (props: { merchant: string; tierIndex: bigint; showOffer
   });
 
   return (
-    <li className="py-8 px-5 border border-primary rounded-xl flex m-5">
+    <li className="py-8 px-5 border border-primary rounded-xl m-5">
       Calls/activities per week maximum:{" "}
       {unitsIsLoading ? "Loading..." : typeof unitsPerWeek === "undefined" ? "*" : unitsPerWeek.toString()}
       <br />
