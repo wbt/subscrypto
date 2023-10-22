@@ -27,10 +27,10 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	bool public premium = false;
 	uint256 public totalCounter = 0;
 
-	address masterCoin; //for future use: the address of the stablecoin to move in/out of (native ETH for now)
-	address feeRecipient;
-	uint millipercentFee = 2000; //2% fee default
-	uint fixedConversionFromNative = 16;
+	address public masterCoin; //for future use: the address of the stablecoin to move in/out of (native ETH for now)
+	address public feeRecipient;
+	uint public millipercentFee = 2000; //2% fee default
+	uint public fixedConversionFromNative = 16;
 	mapping(/*merchant*/ address => mapping(/*customer*/ address => uint)) public serviceDeposits;
 	mapping(/*merchant*/ address => Tier[]) public tiersOffered;
 	mapping(/*merchant*/ address => mapping(/*customer*/ address => Subscription)) public subscriptions;
