@@ -21,10 +21,20 @@ export const TierSetup = () => {
     <li className="py-8 px-5 border border-primary rounded-xl flex flex-col m-5">
       <span className="text-xl my-4">Create a new service tier:</span>
       Calls/activities per week maximum:
-      <input type="number" className="input border border-primary" onChange={e => setUnitsPerWeek(e.target.value)} />
+      <input
+        type="number"
+        className="input border border-primary"
+        value={unitsPerWeek}
+        onChange={e => setUnitsPerWeek(e.target.value)}
+      />
       <br />
       Price per week in credits (each ≈$1):
-      <input type="number" className="input border border-primary" onChange={e => setPricePerWeek(e.target.value)} />
+      <input
+        type="number"
+        className="input border border-primary"
+        value={pricePerWeek}
+        onChange={e => setPricePerWeek(e.target.value)}
+      />
       <ActionButton onClick={writeAsync} text={"Create tier"} isLoading={isLoading} />
     </li>
   );
