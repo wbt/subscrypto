@@ -347,6 +347,23 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		}
 	}
 
+	function stopAndRefundToNativeToken(
+		address merchant
+	) public {
+		stopAndRefundToNativeToken(
+			merchant,
+			msg.sender
+		);
+	}
+
+	function stopAndRefundToNativeToken(
+		address merchant,
+		address customer
+	) private {
+		stopAndRefund(merchant, customer);
+		withdraw(customer);
+	}
+
 	function stopAndRefund(
 		address merchant
 	) public {
