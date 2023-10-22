@@ -662,7 +662,7 @@ const contracts = {
           ],
         },
         SubscryptoToken: {
-          address: "0x9A676e781A523b5d0C0e43731313A708CB607508",
+          address: "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE",
           abi: [
             {
               inputs: [
@@ -1354,6 +1354,30 @@ const contracts = {
             {
               inputs: [],
               name: "deposit",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
+                },
+              ],
+              stateMutability: "payable",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
+                  name: "merchant",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "tierIndex",
+                  type: "uint256",
+                },
+              ],
+              name: "depositEthToSubscription",
               outputs: [],
               stateMutability: "payable",
               type: "function",
@@ -1749,6 +1773,19 @@ const contracts = {
               inputs: [
                 {
                   internalType: "address",
+                  name: "merchant",
+                  type: "address",
+                },
+              ],
+              name: "stopAndRefundToNativeToken",
+              outputs: [],
+              stateMutability: "nonpayable",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
                   name: "",
                   type: "address",
                 },
@@ -1964,14 +2001,14 @@ const contracts = {
               ],
               name: "withdraw",
               outputs: [],
-              stateMutability: "payable",
+              stateMutability: "nonpayable",
               type: "function",
             },
             {
               inputs: [],
               name: "withdraw",
               outputs: [],
-              stateMutability: "payable",
+              stateMutability: "nonpayable",
               type: "function",
             },
             {
