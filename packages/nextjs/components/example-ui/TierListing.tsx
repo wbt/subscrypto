@@ -1,4 +1,4 @@
-import { TiersList } from "./TierList";
+import { TierList } from "./TierList";
 import { useAccount } from "wagmi";
 import {
   useScaffoldContract,
@@ -60,7 +60,7 @@ export const TierListing = () => {
       <div className="topRow">
         <h2 className="text-4xl">{tierCountText}</h2>
       </div>
-      <TiersList merchant={address} tiersLength={tiersLength} />
+      <TierList merchant={address} tiersLength={tiersLength} />
     </div>
   );
 };

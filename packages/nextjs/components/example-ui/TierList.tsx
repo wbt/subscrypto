@@ -1,7 +1,7 @@
 import { TierCard } from "./TierCard";
 import { TierSetup } from "./TierSetup";
 
-export const TiersList = (props: { merchant?: string; tiersLength?: bigint }) => {
+export const TierList = (props: { merchant?: string; tiersLength?: bigint }) => {
   const tiersLength = props.tiersLength;
   const merchant = props.merchant;
   if (typeof tiersLength == "undefined" || typeof merchant == "undefined") {
