@@ -39,17 +39,17 @@ const Debug: NextPage = () => {
                     className={`btn btn-secondary btn-sm normal-case font-thin ${
                       contractName === selectedContract ? "bg-base-300" : "bg-base-100"
                     }`}
-                    key={contractName}
+                    key={contractName as string}
                     onClick={() => setSelectedContract(contractName)}
                   >
-                    {contractName}
+                    {contractName as string}
                   </button>
                 ))}
               </div>
             )}
             {contractNames.map(contractName => (
               <ContractUI
-                key={contractName}
+                key={contractName as string}
                 contractName={contractName}
                 className={contractName === selectedContract ? "" : "hidden"}
               />
