@@ -44,7 +44,7 @@ export const TierListing = () => {
   const { data: yourContract } = useScaffoldContract({ contractName: "SubscryptoToken" });
   console.log("subscryptoToken: ", yourContract);
 
-  let tierCountText = "No defined tiers for this merchant account yet! Use the tool to the right to create one.";
+  let tierCountText = "No defined tiers for this merchant account yet! You can create one below.";
   if (isTierCountLoading) {
     tierCountText = "Loading...";
   } else if (typeof tiersLength === "undefined") {

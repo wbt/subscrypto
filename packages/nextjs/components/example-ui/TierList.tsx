@@ -1,4 +1,5 @@
 import { TierCard } from "./TierCard";
+import { TierSetup } from "./TierSetup";
 
 export const TiersList = (props: { merchant?: string; tiersLength?: bigint }) => {
   const tiersLength = props.tiersLength;
@@ -17,6 +18,7 @@ export const TiersList = (props: { merchant?: string; tiersLength?: bigint }) =>
           {indicies.map(index => (
             <TierCard key={index.toString()} merchant={merchant} tierIndex={index} showOfferedStatus={true} />
           ))}
+          <TierSetup />
         </ol>
       </div>
     </div>
