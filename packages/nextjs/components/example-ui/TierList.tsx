@@ -23,7 +23,7 @@ export const TierList = (props: { merchant?: string; tiersLength?: bigint; showO
               showOfferedStatus={props.showOfferedStatus}
             />
           ))}
-          <TierSetup />
+          {props.showOfferedStatus ? <TierSetup /> : null}
         </ol>
       </div>
     </div>
