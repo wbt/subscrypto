@@ -1,4 +1,5 @@
 import { ActionButton } from "./actionButton";
+import type { TransactionReceipt } from "viem";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 export const ActiveStatus = (props: {
@@ -11,7 +12,7 @@ export const ActiveStatus = (props: {
     contractName: "SubscryptoToken",
     functionName: "setTierisActivelyOffered",
     args: [props.tierIndex, true],
-    onBlockConfirmation: txnReceipt => {
+    onBlockConfirmation: (txnReceipt: TransactionReceipt) => {
       console.log("📦 Transaction blockHash", txnReceipt.blockHash);
     },
   });
@@ -20,7 +21,7 @@ export const ActiveStatus = (props: {
     contractName: "SubscryptoToken",
     functionName: "setTierisActivelyOffered",
     args: [props.tierIndex, false],
-    onBlockConfirmation: txnReceipt => {
+    onBlockConfirmation: (txnReceipt: TransactionReceipt) => {
       console.log("📦 Transaction blockHash", txnReceipt.blockHash);
     },
   });

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ActionButton } from "./actionButton";
 import { WeeksInput } from "./weeksInput";
+import type { TransactionReceipt } from "viem";
 import { useAccount } from "wagmi";
 import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
@@ -46,7 +47,7 @@ export const SubscriberStatus = (props: { merchant: string; tierIndex: bigint; p
     args: [props.merchant, props.tierIndex],
     // ts-ignore docs say value is string, not bigint
     value: getEtherValue(props.pricePerWeek, weeksValue),
-    onBlockConfirmation: txnReceipt => {
+    onBlockConfirmation: (txnReceipt: TransactionReceipt) => {
       console.log("📦 Transaction blockHash", txnReceipt.blockHash);
     },
   });
@@ -55,7 +56,7 @@ export const SubscriberStatus = (props: { merchant: string; tierIndex: bigint; p
     contractName: "SubscryptoToken",
     functionName: "stopAndRefundToNativeToken",
     args: [props.merchant],
-    onBlockConfirmation: txnReceipt => {
+    onBlockConfirmation: (txnReceipt: TransactionReceipt) => {
       console.log("📦 Transaction blockHash", txnReceipt.blockHash);
     },
   });

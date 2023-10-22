@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ActionButton } from "./actionButton";
 import { parseEther } from "viem";
+import type { TransactionReceipt } from "viem";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 export const TierSetup = () => {
@@ -12,7 +13,7 @@ export const TierSetup = () => {
     functionName: "addTier",
     //@ts-ignore: not sure why it's not picking up that this function exists on this contract
     args: [parseInt(unitsPerWeek), parseEther(pricePerWeek)],
-    onBlockConfirmation: txnReceipt => {
+    onBlockConfirmation: (txnReceipt: TransactionReceipt) => {
       console.log("📦 Transaction blockHash", txnReceipt.blockHash);
     },
   });

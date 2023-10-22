@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ActionButton } from "./actionButton";
 import { formatEther } from "viem";
+import type { TransactionReceipt } from "viem";
 import { useAccount } from "wagmi";
 import { isAddress } from "web3-validator";
 import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
@@ -19,7 +20,7 @@ export const RecognizeRevenue = () => {
     functionName: "claimRevenueToNativeToken",
     //@ts-ignore not sure why it's not picking up on this function's presence.
     args: [address, customerAddr],
-    onBlockConfirmation: txnReceipt => {
+    onBlockConfirmation: (txnReceipt: TransactionReceipt) => {
       console.log("📦 Transaction blockHash", txnReceipt.blockHash);
     },
   });

@@ -1,5 +1,6 @@
 import { ActionButton } from "./actionButton";
 import { formatEther } from "viem";
+import type { TransactionReceipt } from "viem";
 import { useAccount } from "wagmi";
 import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
@@ -15,7 +16,7 @@ export const WithdrawCredits = () => {
     functionName: "withdraw",
     //@ts-ignore not sure why it's not picking up on this function's presence.
     args: [],
-    onBlockConfirmation: txnReceipt => {
+    onBlockConfirmation: (txnReceipt: TransactionReceipt) => {
       console.log("📦 Transaction blockHash", txnReceipt.blockHash);
     },
   });
