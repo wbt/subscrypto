@@ -33,7 +33,7 @@ export const TierCard = (props: { merchant: string; tierIndex: bigint; showOffer
       Price per week in credits (each ≈$1):{" "}
       {priceIsLoading ? "Loading..." : typeof pricePerWeek === "undefined" ? "*" : formatEther(pricePerWeek)}
       <br />
-      {activeOfferText}
+      {props.showOfferedStatus ? activeOfferText : null}
     </li>
   );
 };
