@@ -96,8 +96,10 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		emit MasterCoinSet(_masterCoin);
 	}
 
-	function deposit() public payable {
-		_mint(msg.sender, msg.value*fixedConversionFromNative);
+	function deposit() public payable returns(uint) {
+		uint localTokens = msg.value*fixedConversionFromNative;
+		_mint(msg.sender, localTokens);
+		return localTokens;
 	}
 
 	function withdraw() public payable {
