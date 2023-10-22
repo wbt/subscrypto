@@ -13,6 +13,15 @@ export const TierCard = (props: { merchant: string; tierIndex: bigint; showOffer
     functionName: "getTierPricePerWeek",
     args: [props.merchant, props.tierIndex],
   });
+  const { data: isActivelyOffered, isLoading: activeStatusIsLoading } = useScaffoldContractRead({
+    contractName: "SubscryptoToken",
+    functionName: "getTierisActivelyOffered",
+    args: [props.merchant, props.tierIndex],
+  });
+
+  if (!props.showOfferedStatus && (activeStatusIsLoading || !isActivelyOffered)) {
+    return null;
+  }
 
   return (
     <li className="py-8 px-5 border border-primary rounded-xl m-5">
@@ -22,7 +31,14 @@ export const TierCard = (props: { merchant: string; tierIndex: bigint; showOffer
       Price per week in credits (each ≈$1):{" "}
       {priceIsLoading ? "Loading..." : typeof pricePerWeek === "undefined" ? "*" : formatEther(pricePerWeek)}
       <br />
-      {props.showOfferedStatus ? <ActiveStatus merchant={props.merchant} tierIndex={props.tierIndex} /> : null}
+      {props.showOfferedStatus ? (
+        <ActiveStatus
+          merchant={props.merchant}
+          tierIndex={props.tierIndex}
+          activeStatusIsLoading={activeStatusIsLoading}
+          isActivelyOffered={isActivelyOffered}
+        />
+      ) : null}
     </li>
   );
 };

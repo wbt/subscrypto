@@ -1,13 +1,12 @@
 import { ActionButton } from "./actionButton";
-import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
+import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
-export const ActiveStatus = (props: { merchant: string; tierIndex: bigint }) => {
-  const { data: isActivelyOffered, isLoading: activeStatusIsLoading } = useScaffoldContractRead({
-    contractName: "SubscryptoToken",
-    functionName: "getTierisActivelyOffered",
-    args: [props.merchant, props.tierIndex],
-  });
-
+export const ActiveStatus = (props: {
+  merchant: string;
+  tierIndex: bigint;
+  activeStatusIsLoading: boolean;
+  isActivelyOffered: boolean | undefined;
+}) => {
   const { writeAsync: setActivelyOfferedTrue, isLoading: writeTrueIsLoading } = useScaffoldContractWrite({
     contractName: "SubscryptoToken",
     functionName: "setTierisActivelyOffered",
@@ -26,12 +25,12 @@ export const ActiveStatus = (props: { merchant: string; tierIndex: bigint }) => 
     },
   });
 
-  const anythingIsLoading = activeStatusIsLoading || writeTrueIsLoading || writeFalseIsLoading;
+  const anythingIsLoading = props.activeStatusIsLoading || writeTrueIsLoading || writeFalseIsLoading;
 
-  if (activeStatusIsLoading) {
+  if (props.activeStatusIsLoading) {
     return <>Checking to see if this is actively offered.</>;
   } else {
-    if (isActivelyOffered) {
+    if (props.isActivelyOffered) {
       return (
         <>
           Actively offered.
