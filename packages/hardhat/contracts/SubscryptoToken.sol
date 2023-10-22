@@ -172,6 +172,26 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		);
 	}
 
+	function depositEthToSubscription(
+		address merchant,
+		uint tierIndex
+	) public payable {
+		depositEthToSubscription(
+			merchant,
+			msg.sender,
+			tierIndex
+		);
+	}
+
+	function depositEthToSubscription(
+		address merchant,
+		address customer,
+		uint tierIndex
+	) private {
+		uint localTokens = deposit();
+		topUpWithMerchantAndSetTier(merchant, customer, tierIndex, localTokens);
+	}
+
 	function topUpWithMerchantAndSetTier(
 		address merchant,
 		uint tierIndex,
