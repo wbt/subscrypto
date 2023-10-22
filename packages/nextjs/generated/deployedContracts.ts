@@ -662,7 +662,7 @@ const contracts = {
           ],
         },
         SubscryptoToken: {
-          address: "0x851356ae760d987E095750cCeb3bC6014560891C",
+          address: "0xf5059a5D33d5853360D16C683c16e67980206f36",
           abi: [
             {
               inputs: [
@@ -1250,6 +1250,30 @@ const contracts = {
               inputs: [
                 {
                   internalType: "address",
+                  name: "merchant",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "customer",
+                  type: "address",
+                },
+              ],
+              name: "amountDueToMerchantMinusFees",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
                   name: "spender",
                   type: "address",
                 },
@@ -1333,6 +1357,30 @@ const contracts = {
                   type: "address",
                 },
               ],
+              name: "cappedDueToMerchant",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
+                  name: "merchant",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "customer",
+                  type: "address",
+                },
+              ],
               name: "claimRevenue",
               outputs: [
                 {
@@ -1360,6 +1408,25 @@ const contracts = {
               name: "claimRevenueToNativeToken",
               outputs: [],
               stateMutability: "nonpayable",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "uint256",
+                  name: "amountToMerchant",
+                  type: "uint256",
+                },
+              ],
+              name: "computeFeeOnAmount",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
+                },
+              ],
+              stateMutability: "view",
               type: "function",
             },
             {
