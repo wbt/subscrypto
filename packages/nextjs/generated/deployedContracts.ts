@@ -662,7 +662,7 @@ const contracts = {
           ],
         },
         SubscryptoToken: {
-          address: "0xc3e53F4d16Ae77Db1c982e75a937B9f60FE63690",
+          address: "0x851356ae760d987E095750cCeb3bC6014560891C",
           abi: [
             {
               inputs: [
@@ -1334,6 +1334,30 @@ const contracts = {
                 },
               ],
               name: "claimRevenue",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
+                },
+              ],
+              stateMutability: "nonpayable",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
+                  name: "merchant",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "customer",
+                  type: "address",
+                },
+              ],
+              name: "claimRevenueToNativeToken",
               outputs: [],
               stateMutability: "nonpayable",
               type: "function",
