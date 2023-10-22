@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { MetaHeader } from "~~/components/MetaHeader";
 import { TierListing } from "~~/components/example-ui/TierListing";
+import { RecognizeRevenue } from "~~/components/example-ui/recognizeRevenue";
 import { WithdrawCredits } from "~~/components/example-ui/withdrawCredits";
 
 const MerchantSetup: NextPage = () => {
@@ -13,6 +14,7 @@ const MerchantSetup: NextPage = () => {
         description="Allows the maker of an API to set up offerings to sell access for cryptocurrency payments."
       />
       <TierListing showOfferedStatus={true} merchant={address} />
+      <RecognizeRevenue />
       <WithdrawCredits />
     </>
   );
