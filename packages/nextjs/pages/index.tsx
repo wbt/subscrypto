@@ -14,16 +14,11 @@ const Home: NextPage = () => {
             <span className="block text-4xl font-bold">Subscrypto</span>
           </h1>
           <p className="text-center text-lg">
-            Get started by editing{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/nextjs/pages/index.tsx
-            </code>
-          </p>
-          <p className="text-center text-lg">
-            Edit your smart contract in{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/hardhat/contracts
-            </code>
+            If you want to start earning crypto revenue from your new API, you can set up your usage/price/feature tiers
+            with Subscrypto quickly, offer your own checkout experience prompting a blockchain transaction for
+            prepayment of as many months as a customer wants (unused portion refundable) and query on-chain data to
+            figure out if they are current on their subscription. Customers can adjust their tier or discontinue service
+            at any time and pay for the period actually subscribed.
           </p>
         </div>
 
