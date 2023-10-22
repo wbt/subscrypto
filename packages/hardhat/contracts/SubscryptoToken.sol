@@ -165,6 +165,14 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		uint pricePerWeek,
 		bool isActivelyOffered
 	) public {
+		if (tiersOffered[msg.sender]).length == 0 {
+			//Set index 0 to the non-subscription:
+			tiersOffered[msg.sender].push(Tier({
+				unitsPerWeek: 0,
+				pricePerWeek: 0,
+				isActivelyOffered: true
+			}));
+		}
 		tiersOffered[msg.sender].push(Tier({
 			unitsPerWeek: unitsPerWeek,
 			pricePerWeek: pricePerWeek,
