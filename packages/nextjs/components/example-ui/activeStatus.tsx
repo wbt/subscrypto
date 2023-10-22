@@ -7,11 +7,13 @@ export const ActiveStatus = (props: { merchant: string; tierIndex: bigint }) => 
     args: [props.merchant, props.tierIndex],
   });
 
-  let activeOfferText = "Actively offered";
-  if (activeStatusIsLoading) {
-    activeOfferText = "Checking to see if this is actively offered.";
-  } else if (!isActivelyOffered) {
-    activeOfferText = "Not actively offered.";
+  let activeOfferText = "Checking to see if this is actively offered.";
+  if (!activeStatusIsLoading) {
+    if (isActivelyOffered) {
+      activeOfferText = "Actively offered";
+    } else {
+      activeOfferText = "Not actively offered.";
+    }
   }
 
   return <>{activeOfferText}</>;
