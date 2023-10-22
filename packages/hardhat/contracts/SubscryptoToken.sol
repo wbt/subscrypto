@@ -302,6 +302,20 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		);
 	}
 
+	function getTier(
+		address merchant,
+		address customer
+	) public view returns(uint) {
+		return subscriptions[merchant][customer].tier;
+	}
+
+	function getStart(
+		address merchant,
+		address customer
+	) public view returns(uint) {
+		return subscriptions[merchant][customer].start;
+	}
+
 	/**
 	 * Called by a customer to choose which tier to be in
 	 * Set tierIndex = 0 to end subscription
