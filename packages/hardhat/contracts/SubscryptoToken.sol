@@ -149,6 +149,33 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		_mint(to, amount);
 	}
 
+	function getTiersCount(
+		address merchant
+	) public view returns(uint) {
+		return tiersOffered[merchant].length;
+	}
+
+	function getTierUnitsPerWeek(
+		address merchant,
+		uint tierIndex
+	) public view returns(uint) {
+		return tiersOffered[merchant][tierIndex].unitsPerWeek;
+	}
+
+	function getTierPricePerWeek(
+		address merchant,
+		uint tierIndex
+	) public view returns(uint) {
+		return tiersOffered[merchant][tierIndex].pricePerWeek;
+	}
+
+	function getTierisActivelyOffered(
+		address merchant,
+		uint tierIndex
+	) public view returns(bool) {
+		return tiersOffered[merchant][tierIndex].isActivelyOffered;
+	}
+
 	function addTier(
 		uint unitsPerWeek,
 		uint pricePerWeek
@@ -165,7 +192,7 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		uint pricePerWeek,
 		bool isActivelyOffered
 	) public {
-		if (tiersOffered[msg.sender]).length == 0 {
+		if (tiersOffered[msg.sender].length == 0) {
 			//Set index 0 to the non-subscription:
 			tiersOffered[msg.sender].push(Tier({
 				unitsPerWeek: 0,
@@ -279,7 +306,8 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		address customer,
 		uint tierIndex
 	) private {
-		require(tierIndex < tiers[merchant].length, 'No such tier offered by this merchant.');
+		require(tierIndex < tiersOffered[merchant].length, 'No such tier offered by this merchant.');
+		require(tiersOffered[merchant][tierIndex].isActivelyOffered, 'Tier is not actively offered at present.');
 		accountAtSubscriptionEnd(merchant, customer);
 		subscriptions[merchant][customer] = Subscription({
 			tier: tierIndex,
