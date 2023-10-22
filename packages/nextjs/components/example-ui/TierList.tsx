@@ -13,19 +13,17 @@ export const TierList = (props: { merchant?: string; tiersLength?: bigint; showO
   }
   return (
     <div className="flex flex-col justify-center items-center py-10 px-5 sm:px-0 lg:py-auto max-w-[100vw] ">
-      <div className="flex justify-between w-full">
-        <ol>
-          {indicies.map(index => (
-            <TierCard
-              key={index.toString()}
-              merchant={merchant}
-              tierIndex={index}
-              showOfferedStatus={props.showOfferedStatus}
-            />
-          ))}
-          {props.showOfferedStatus ? <TierSetup /> : null}
-        </ol>
-      </div>
+      <ol>
+        {indicies.map(index => (
+          <TierCard
+            key={index.toString()}
+            merchant={merchant}
+            tierIndex={index}
+            showOfferedStatus={props.showOfferedStatus}
+          />
+        ))}
+        {props.showOfferedStatus ? <TierSetup /> : null}
+      </ol>
     </div>
   );
 };
