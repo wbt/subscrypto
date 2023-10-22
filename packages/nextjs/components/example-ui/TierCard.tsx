@@ -1,4 +1,5 @@
 import { ActiveStatus } from "./activeStatus";
+import { SubscriberStatus } from "./subscriberStatus";
 import { formatEther } from "viem";
 import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 
@@ -38,7 +39,9 @@ export const TierCard = (props: { merchant: string; tierIndex: bigint; showOffer
           activeStatusIsLoading={activeStatusIsLoading}
           isActivelyOffered={isActivelyOffered}
         />
-      ) : null}
+      ) : (
+        <SubscriberStatus merchant={props.merchant} tierIndex={props.tierIndex} pricePerWeek={pricePerWeek} />
+      )}
     </li>
   );
 };
