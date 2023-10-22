@@ -1,3 +1,4 @@
+import { ActiveStatus } from "./activeStatus";
 import { formatEther } from "viem";
 import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 
@@ -12,18 +13,6 @@ export const TierCard = (props: { merchant: string; tierIndex: bigint; showOffer
     functionName: "getTierPricePerWeek",
     args: [props.merchant, props.tierIndex],
   });
-  const { data: isActivelyOffered, isLoading: activeStatusIsLoading } = useScaffoldContractRead({
-    contractName: "SubscryptoToken",
-    functionName: "getTierisActivelyOffered",
-    args: [props.merchant, props.tierIndex],
-  });
-
-  let activeOfferText = "Actively offered";
-  if (activeStatusIsLoading) {
-    activeOfferText = "Checking to see if this is actively offered.";
-  } else if (!isActivelyOffered) {
-    activeOfferText = "Not actively offered.";
-  }
 
   return (
     <li className="py-8 px-5 border border-primary rounded-xl flex m-5">
@@ -33,7 +22,7 @@ export const TierCard = (props: { merchant: string; tierIndex: bigint; showOffer
       Price per week in credits (each ≈$1):{" "}
       {priceIsLoading ? "Loading..." : typeof pricePerWeek === "undefined" ? "*" : formatEther(pricePerWeek)}
       <br />
-      {props.showOfferedStatus ? activeOfferText : null}
+      {props.showOfferedStatus ? <ActiveStatus merchant={props.merchant} tierIndex={props.tierIndex} /> : null}
     </li>
   );
 };
