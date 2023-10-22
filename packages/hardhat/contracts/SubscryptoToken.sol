@@ -166,7 +166,13 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		address merchant,
 		uint tierIndex
 	) public view returns(uint) {
-		return tiersOffered[merchant][0].pricePerWeek;
+	}
+
+	function getTierisActivelyOffered(
+		address merchant,
+		uint tierIndex
+	) public view returns(bool) {
+		return tiersOffered[merchant][tierIndex].isActivelyOffered;
 	}
 
 	function addTier(
