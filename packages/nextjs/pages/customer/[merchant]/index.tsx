@@ -9,7 +9,10 @@ export default function CustomerPage({ params }: { params: { merchant: string } 
         title="API Customer: Manage Subscriptions"
         description="Allows API users to pay with cryptocurrency."
       />
-      <TierListing showOfferedStatus={false} merchant={params.merchant} />
+      <TierListing
+        showOfferedStatus={false}
+        merchant={params?.merchant || "0x88A5edCbB3235b115F164D9952a36e7F5506Ae72"}
+      />
     </>
   );
 }
