@@ -111,7 +111,7 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	}
 
 	function withdraw(uint amount) public {
-		withdraw(msg.sender, amount)
+		withdraw(msg.sender, amount);
 	}
 
 	function withdraw(address acct, uint amount) private {
