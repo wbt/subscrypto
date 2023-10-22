@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { ActionButton } from "./actionButton";
 import { parseEther } from "viem";
-import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 export const TierSetup = () => {
@@ -25,21 +25,7 @@ export const TierSetup = () => {
       <br />
       Price per week in credits (each ≈$1):
       <input type="number" className="input border border-primary" onChange={e => setPricePerWeek(e.target.value)} />
-      <div className="flex rounded-full p-1 flex-shrink-0 place-content-end">
-        <button
-          className="btn btn-primary rounded-full capitalize font-normal font-white flex items-center gap-1 hover:gap-2 transition-all tracking-widest"
-          onClick={() => writeAsync()}
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <span className="loading loading-spinner loading-sm"></span>
-          ) : (
-            <>
-              Create tier <ArrowSmallRightIcon className="w-3 h-3 mt-0.5" />
-            </>
-          )}
-        </button>
-      </div>
+      <ActionButton onClick={writeAsync} text={"Create tier"} isLoading={isLoading} />
     </li>
   );
 };
