@@ -13,7 +13,7 @@ const CustomerPage: NextPage = () => {
   return (
     <>
       <MetaHeader
-        title="API Customer: Mange Subscriptions"
+        title="API Customer: Manage Subscriptions"
         description="Allows API users to pay with cryptocurrency."
       />
       This application allows you to subscribe to APIs for a specific known provider.
