@@ -102,11 +102,11 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		return localTokens;
 	}
 
-	function withdraw() public payable {
+	function withdraw() public {
 		withdraw(balanceOf(msg.sender));
 	}
 
-	function withdraw(uint amount) public payable {
+	function withdraw(uint amount) public {
 		address acct = msg.sender;
 		require(amount <= balanceOf(acct), 'Insufficient uncommitted funds for specified withdrawal amount.');
 		uint ethToSend = amount / fixedConversionFromNative; //TODO verify round-trip rounding security
