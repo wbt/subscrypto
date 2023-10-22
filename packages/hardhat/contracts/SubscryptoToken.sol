@@ -353,7 +353,7 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	function accountAtSubscriptionEnd(
 		address merchant,
 		address customer
-	) private {
+	) private returns (uint) {
 		uint dueToMerchant = amountDueToMerchant(merchant, customer);
 		if(dueToMerchant > 0) {
 			uint cappedToMerchant = min(dueToMerchant, serviceDeposits[merchant][customer]);
@@ -368,15 +368,26 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 				merchantRevenue,
 				fee
 			);
+			return merchantRevenue;
 		}
+		return 0;
+	}
+
+	function claimRevenueToNativeToken(
+		address merchant,
+		address customer
+	) public { //Anyone can pay the gas - TODO check for security downsides - perhaps greater here due to currency conversion
+		uint creditsClaimed = claimRevenue(merchant, customer);
+		withdraw(merchant, creditsClaimed);
 	}
 
 	function claimRevenue(
 		address merchant,
 		address customer
-	) public { //Anyone can pay the gas - TODO check for security downsides
-		accountAtSubscriptionEnd(merchant, customer);
+	) public returns(uint) { //Anyone can pay the gas - TODO check for security downsides
+		uint credits = accountAtSubscriptionEnd(merchant, customer);
 		subscriptions[merchant][customer].start = block.timestamp;
+		return credits;
 	}
 
 	function amountDueToMerchant(
