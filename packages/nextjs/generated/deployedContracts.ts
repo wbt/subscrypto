@@ -5,7 +5,7 @@ const contracts = {
       name: "localhost",
       contracts: {
         FakeMasterToken: {
-          address: "0x610178dA211FEF7D417bC0e6FeD39F05609AD788",
+          address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
           abi: [
             {
               inputs: [
@@ -662,7 +662,7 @@ const contracts = {
           ],
         },
         SubscryptoToken: {
-          address: "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE",
+          address: "0xc3e53F4d16Ae77Db1c982e75a937B9f60FE63690",
           abi: [
             {
               inputs: [
@@ -1427,12 +1427,203 @@ const contracts = {
             },
             {
               inputs: [],
+              name: "feeRecipient",
+              outputs: [
+                {
+                  internalType: "address",
+                  name: "",
+                  type: "address",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [],
+              name: "fixedConversionFromNative",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
+                  name: "merchant",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "customer",
+                  type: "address",
+                },
+              ],
+              name: "getStart",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
+                  name: "merchant",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "customer",
+                  type: "address",
+                },
+              ],
+              name: "getTier",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
+                  name: "merchant",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "tierIndex",
+                  type: "uint256",
+                },
+              ],
+              name: "getTierPricePerWeek",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
+                  name: "merchant",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "tierIndex",
+                  type: "uint256",
+                },
+              ],
+              name: "getTierUnitsPerWeek",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
+                  name: "merchant",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "tierIndex",
+                  type: "uint256",
+                },
+              ],
+              name: "getTierisActivelyOffered",
+              outputs: [
+                {
+                  internalType: "bool",
+                  name: "",
+                  type: "bool",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
+                  name: "merchant",
+                  type: "address",
+                },
+              ],
+              name: "getTiersCount",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [],
               name: "greeting",
               outputs: [
                 {
                   internalType: "string",
                   name: "",
                   type: "string",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [],
+              name: "masterCoin",
+              outputs: [
+                {
+                  internalType: "address",
+                  name: "",
+                  type: "address",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [],
+              name: "millipercentFee",
+              outputs: [
+                {
+                  internalType: "uint256",
+                  name: "",
+                  type: "uint256",
                 },
               ],
               stateMutability: "view",
@@ -1752,6 +1943,24 @@ const contracts = {
                 },
               ],
               name: "setTier",
+              outputs: [],
+              stateMutability: "nonpayable",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "uint256",
+                  name: "tierIndex",
+                  type: "uint256",
+                },
+                {
+                  internalType: "bool",
+                  name: "shouldBeOffered",
+                  type: "bool",
+                },
+              ],
+              name: "setTierisActivelyOffered",
               outputs: [],
               stateMutability: "nonpayable",
               type: "function",
