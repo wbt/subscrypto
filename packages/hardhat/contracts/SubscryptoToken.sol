@@ -354,11 +354,10 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		address merchant,
 		address customer
 	) private returns (uint) {
-		uint dueToMerchant = amountDueToMerchant(merchant, customer);
-		if(dueToMerchant > 0) {
-			uint cappedToMerchant = min(dueToMerchant, serviceDeposits[merchant][customer]);
+		uint cappedToMerchant = cappedDueToMerchant(merchant, customer);
+		if(cappedToMerchant > 0) {
 			serviceDeposits[merchant][customer] -= cappedToMerchant;
-			uint fee = cappedToMerchant * millipercentFee / 100000;
+			uint fee = computeFeeOnAmount(cappedToMerchant);
 			uint merchantRevenue = cappedToMerchant - fee;
 			_mint(merchant, merchantRevenue);
 			_mint(feeRecipient, fee);
@@ -403,6 +402,28 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		} else {
 			return 0;
 		}
+	}
+
+	function cappedDueToMerchant(
+		address merchant,
+		address customer
+	) public view returns(uint) {
+		uint dueToMerchant = amountDueToMerchant(merchant, customer);
+		return min(dueToMerchant, serviceDeposits[merchant][customer]);
+	}
+
+	function computeFeeOnAmount(
+		uint amountToMerchant
+	) public view returns(uint) {
+		return amountToMerchant * millipercentFee / 100000;
+	}
+
+	function amountDueToMerchantMinusFees(
+		address merchant,
+		address customer
+	) public view returns(uint) {
+		uint beforeFees = cappedDueToMerchant(merchant, customer);
+		return beforeFees - computeFeeOnAmount(beforeFees);
 	}
 
 	function remainingAvailableDeposit(
