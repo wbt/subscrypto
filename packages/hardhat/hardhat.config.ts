@@ -50,12 +50,20 @@ const config: HardhatUserConfig = {
       url: `https://eth-sepolia.g.alchemy.com/v2/${providerApiKey}`,
       accounts: [deployerPrivateKey],
     },
+    scrollSepolia: {
+      url: `https://sepolia-rpc.scroll.io/`,
+      accounts: [deployerPrivateKey],
+    },
     goerli: {
       url: `https://eth-goerli.alchemyapi.io/v2/${providerApiKey}`,
       accounts: [deployerPrivateKey],
     },
     etcMordor: {
       url: `https://rpc.mordor.etccooperative.org`,
+      accounts: [deployerPrivateKey],
+    },
+    xrpevmside: {
+      url: `https://rpc-evm-sidechain.xrpl.org`,
       accounts: [deployerPrivateKey],
     },
     arbitrum: {

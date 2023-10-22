@@ -9,7 +9,7 @@ export type ScaffoldConfig = {
   onlyLocalBurnerWallet: boolean;
   walletAutoConnect: boolean;
 };
-
+/*
 const mordorETCdetails: Chain = {
   id: 63,
   name: "Ethereum Classic Testnet Mordor",
@@ -25,9 +25,39 @@ const mordorETCdetails: Chain = {
   },
 };
 
+const xrpevmsidechaindetails: Chain = {
+  id: 1440002,
+  name: "EVM Compatible XRP Ledger Sidechain",
+  network: "xrpevmside",
+  nativeCurrency: {
+    name: "Ripple Sidechain",
+    symbol: "XRP",
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: { http: ["https://rpc-evm-sidechain.xrpl.org" as const] },
+    public: { http: ["https://rpc-evm-sidechain.xrpl.org" as const] },
+  },
+}
+*/
+const scrollTestDetails: Chain = {
+  id: 534351,
+  name: "Scroll Sepolia",
+  network: "scrollsepolia",
+  nativeCurrency: {
+    name: "ETH",
+    symbol: "ETH",
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: { http: ["https://sepolia-rpc.scroll.io/" as const] },
+    public: { http: ["https://sepolia-rpc.scroll.io/" as const] },
+  },
+};
+
 const scaffoldConfig = {
   // The network where your DApp lives in
-  targetNetwork: mordorETCdetails, //chains.hardhat,
+  targetNetwork: scrollTestDetails, //xrpevmsidechaindetails, //mordorETCdetails, //chains.hardhat,
 
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect on the local network
