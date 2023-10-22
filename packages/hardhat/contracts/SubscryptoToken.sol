@@ -176,6 +176,22 @@ contract SubscryptoToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 		return tiersOffered[merchant][tierIndex].isActivelyOffered;
 	}
 
+	function setTierisActivelyOffered(
+		uint tierIndex,
+		bool shouldBeOffered
+	) public {
+		return setTierisActivelyOffered(msg.sender, tierIndex, shouldBeOffered);
+	}
+
+	function setTierisActivelyOffered(
+		address merchant,
+		uint tierIndex,
+		bool shouldBeOffered
+	) private {
+		require(tierIndex < tiersOffered[merchant].length, 'No such tier offered by this merchant.');
+		tiersOffered[merchant][tierIndex].isActivelyOffered = shouldBeOffered;
+	}
+
 	function addTier(
 		uint unitsPerWeek,
 		uint pricePerWeek
