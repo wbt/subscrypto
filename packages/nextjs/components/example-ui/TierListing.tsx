@@ -40,6 +40,7 @@ export const TierListing = (props: { showOfferedStatus: boolean; merchant: strin
 
   const { data: yourContract } = useScaffoldContract({ contractName: "SubscryptoToken" });
   console.log("subscryptoToken: ", yourContract);
+  //TODO: Adjust language when there is only one tier left after hiding those not being offered.
   let tierCountText = "You can choose from the following predefined tiers:";
   if (props.showOfferedStatus) {
     tierCountText = "No defined tiers for this merchant account yet! You can create one below.";
