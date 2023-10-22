@@ -7,7 +7,7 @@ import {
   useScaffoldEventSubscriber,
 } from "~~/hooks/scaffold-eth";
 
-export const TierListing = () => {
+export const TierListing = (props: { showOfferedStatus: boolean }) => {
   const { address } = useAccount();
 
   const { data: tiersLength, isLoading: isTierCountLoading } = useScaffoldContractRead({
@@ -60,7 +60,7 @@ export const TierListing = () => {
       <div className="topRow">
         <h2 className="text-4xl">{tierCountText}</h2>
       </div>
-      <TierList merchant={address} tiersLength={tiersLength} />
+      <TierList merchant={address} tiersLength={tiersLength} showOfferedStatus={props.showOfferedStatus} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { TierCard } from "./TierCard";
 import { TierSetup } from "./TierSetup";
 
-export const TierList = (props: { merchant?: string; tiersLength?: bigint }) => {
+export const TierList = (props: { merchant?: string; tiersLength?: bigint; showOfferedStatus: boolean }) => {
   const tiersLength = props.tiersLength;
   const merchant = props.merchant;
   if (typeof tiersLength == "undefined" || typeof merchant == "undefined") {
@@ -16,7 +16,12 @@ export const TierList = (props: { merchant?: string; tiersLength?: bigint }) => 
       <div className="flex justify-between w-full">
         <ol>
           {indicies.map(index => (
-            <TierCard key={index.toString()} merchant={merchant} tierIndex={index} showOfferedStatus={true} />
+            <TierCard
+              key={index.toString()}
+              merchant={merchant}
+              tierIndex={index}
+              showOfferedStatus={props.showOfferedStatus}
+            />
           ))}
           <TierSetup />
         </ol>
