@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { SwitchTheme } from "./SwitchTheme";
-import { Bars3Icon, BuildingStorefrontIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, BuildingStorefrontIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
@@ -22,6 +22,11 @@ export const menuLinks: HeaderMenuLink[] = [
     label: "Merchant: Set up tiers",
     href: "/merchant",
     icon: <BuildingStorefrontIcon className="h-4 w-4" />,
+  },
+  {
+    label: "Customer: Manage subscriptions",
+    href: "/customer",
+    icon: <ShoppingCartIcon className="h-4 w-4" />,
   },
 ];
 
